@@ -31,7 +31,6 @@ func sendMail(data Contact) error {
 		Contact: data,
 		Logo:    "logo",
 	}
-	fmt.Println(templateData.Contact.Name)
 
 	t, err := template.ParseFiles("./assets/template.html")
 	if err != nil {
@@ -52,12 +51,6 @@ func sendMail(data Contact) error {
 		return err
 	}
 
-	// pdfPath := "trial.pdf"
-	// pdfAttachment, err := os.ReadFile(pdfPath)
-	// if err != nil {
-	// 	log.Fatal("error reading pdf file", err)
-	// }
-
 	auth := smtp.PlainAuth("", from, password, smtpServer)
 
 	mime := "MIME-version: 1.0;\nContent-Type: multipart/related; boundary=\"MIMEBOUNDARY\"\n\n"
@@ -71,27 +64,6 @@ func sendMail(data Contact) error {
 	mime += base64.StdEncoding.EncodeToString(attachement) + "\n"
 	mime += "--MIMEBOUNDARY--"
 
-	// with attachemnt
-	// mime := "MIME-version: 1.0; \nContent-Type: multipart/mixed; boundary=\"MIMEBOUNDARY\"\n\n"
-	// mime += "--MIMEBOUNDARY\n"
-	// mime += "Content-Type: multipart/related; boundary=\"RELEATEDBOUNDARY\"\n\n"
-	// mime += "--RELEATEDBOUNDARY\n"
-	// mime += "Content-Type: text/html; charset=\"UTF-8\"\n\n"
-	// mime += body.String() + "\n"
-	// mime += "--RELEATEDBOUNDARY\n"
-	// mime += "Content-Type: image/png\n"
-	// mime += "Content-Transfer-Encoding: base64\n"
-	// mime += "Content-ID: <logo>\n\n"
-	// mime += base64.StdEncoding.EncodeToString(attachement) + "\n"
-	// mime += "--RELEATEDBOUNDARY--\n"
-	// mime += "--MIMEBOUNDARY\n"
-	// mime += "Content-Type: application/pdf; name=\"rohan's wpr.pdf\"\n"
-	// mime += "Content-Transfer-Encoding: base64\n"
-	// // mime += "Content-Disposition: attachment; filename=\"rohan'ss wpr.pdf\"\n\n" // this is recommended way
-	// mime += "Content-Disposition: attachment;\n\n"
-	// mime += base64.StdEncoding.EncodeToString(pdfAttachment) + "\n"
-	// mime += "--MIMEBOUNDARY--\n"
-
 	toHeader := "To: " + to[0] + "\r\n"
 	subjectHeader := "Subject: " + subject + "\r\n"
 	headers := toHeader + subjectHeader
@@ -104,6 +76,5 @@ func sendMail(data Contact) error {
 		return err
 	}
 
-	fmt.Println("mail sent!")
 	return nil
 }

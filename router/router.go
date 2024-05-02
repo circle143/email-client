@@ -10,6 +10,7 @@ import (
 func Router() *chi.Mux {
 	router := chi.NewRouter()
 	router.Use(middleware.Logger)
+	router.Use(middleware.Heartbeat("/"))
 
 	router.Get("/contact-us", controllers.GetContactUs)
 	router.Post("/contact-us", controllers.PostContactUs)
