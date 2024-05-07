@@ -8,4 +8,16 @@ type Appointment struct {
 	VehicleMake        string `json:"vehicleMake"`
 	VehicleModel       string `json:"vehicleModel"`
 	VehicleRequirement string `json:"vehicleRequirement,omitempty"`
+	RequestedDate      string `json:"requestedDate"`
+	RequestedTime      string `json:"requestedTime"`
+}
+
+func (a *Appointment) HandleAppointmentData() error {
+	err := sendMail[Appointment](*a)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

@@ -79,7 +79,7 @@
 							Name
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.Name}}
+							{{.Data.Name}}
 						</td>
 					</tr>
 
@@ -96,7 +96,7 @@
 							Email ID
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.Email}}
+							{{.Data.Email}}
 						</td>
 					</tr>
 
@@ -113,7 +113,7 @@
 							Contact No.
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.PhoneNumber}}
+							{{.Data.PhoneNumber}}
 						</td>
 					</tr>
 
@@ -130,7 +130,7 @@
 							Vehicle Model
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.VehicleModel}}
+							{{.Data.VehicleModel}}
 						</td>
 					</tr>
 
@@ -147,7 +147,7 @@
 							Vehicle Make
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.VehicleMake}}
+							{{.Data.VehicleMake}}
 						</td>
 					</tr>
 
@@ -164,11 +164,45 @@
 							Vehicle Year
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.VehicleYear}}
+							{{.Data.VehicleYear}}
 						</td>
 					</tr>
 
-					{{- if .VehicleRequirement }}
+					{{- if .Data.RequestedDate }}
+					<tr>
+						<th
+							style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+							align="left"
+							valign="top"
+						>
+							Requested Date
+						</th>
+						<td style="width: fit-content; color: #3b3b3b">
+							{{.Data.RequestedDate}}
+						</td>
+					</tr>
+					{{- end }} {{- if .Data.RequestedTime }}
+					<tr>
+						<th
+							style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+							align="left"
+							valign="top"
+						>
+							Requested Time
+						</th>
+						<td style="width: fit-content; color: #3b3b3b">
+							{{.Data.RequestedTime}}
+						</td>
+					</tr>
+					{{- end }} {{- if .Data.VehicleRequirement }}
 					<tr>
 						<th
 							style="
@@ -182,7 +216,7 @@
 							Anything Else?
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.VehicleRequirement}}
+							{{.Data.VehicleRequirement}}
 						</td>
 					</tr>
 					{{- end }}

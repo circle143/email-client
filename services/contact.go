@@ -11,7 +11,7 @@ type Contact struct {
 }
 
 func (c *Contact) HandleContactData() error {
-	err := sendMail(*c)
+	err := sendMail[Contact](*c)
 	if err != nil {
 		return err
 	}

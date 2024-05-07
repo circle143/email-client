@@ -9,12 +9,16 @@ import (
 	"text/template"
 )
 
-type EmailBody struct {
-	Contact
-	Logo string
+type Constraint interface {
+	Contact | Appointment
 }
 
-func sendMail(data Contact) error {
+func sendMail[T Constraint](data T) error {
+	type EmailBody struct {
+		Data T
+		Logo string
+	}
+
 	smtpServer := "smtp.gmail.com"
 	smtpPort := "587"
 
@@ -28,8 +32,8 @@ func sendMail(data Contact) error {
 	// mail content
 	subject := "New form submission"
 	templateData := EmailBody{
-		Contact: data,
-		Logo:    "logo",
+		Data: data,
+		Logo: "logo",
 	}
 
 	t, err := template.ParseFiles("./assets/template.html")

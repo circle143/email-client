@@ -7,18 +7,23 @@ import (
 	"mennr.tech/api/services"
 )
 
-func DecodeJson(w http.ResponseWriter, r *http.Request, placeholder interface{}) error {
+type Constraint interface {
+	services.Contact | services.Appointment
+}
+
+func DecodeJson[T Constraint](w http.ResponseWriter, r *http.Request) (T, error) {
 	maxBytes := 1048576
 	r.Body = http.MaxBytesReader(w, r.Body, int64(maxBytes))
 
+	var placeholder T
 	dec := json.NewDecoder(r.Body)
-	err := dec.Decode(placeholder)
+	err := dec.Decode(&placeholder)
 
 	if err != nil {
-		return err
+		return placeholder, err
 	}
 
-	return nil
+	return placeholder, nil
 }
 
 func EncodeJson(w http.ResponseWriter, status int, data interface{}) error {

@@ -25,6 +25,8 @@ func Router() *chi.Mux {
 	router.Get("/contact-us", controllers.GetContactUs)
 	router.Post("/contact-us", controllers.PostContactUs)
 
+	router.Post("/appointment", controllers.PostAppointment)
+
 	return router
 
 }
