@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Renew form submission</title>
+		<title>Cozy Lounge Reservation</title>
 
 		<style>
 			th,
@@ -11,33 +11,56 @@
 			p {
 				font-size: clamp(1rem, 1.5vw, 1.25rem);
 			}
+
+			td {
+				padding-left: 1.5rem;
+			}
 		</style>
 	</head>
-	<body class style="font-family: 'Helvetica', 'Arial', sans-serif">
+	<body
+		class
+		style="
+			font-family: 'Helvetica', 'Arial', sans-serif;
+			background-image: linear-gradient(
+				to bottom,
+				#161616 300px,
+				#dadada 300px
+			);
+			margin: 0;
+			padding: 0;
+		"
+	>
+		<!-- header -->
 		<div
-			class="container"
+			class="header"
+			style="
+				background-color: #161616;
+				padding-left: 2.5rem;
+				padding-right: 2.5rem;
+				padding-top: 2rem;
+				padding-bottom: 1rem;
+				text-align: center;
+			"
+		>
+			<a href="https://cozylounge.in">
+				<img width="186" height="137" alt src="cid:{{.Logo}}" />
+			</a>
+		</div>
+
+		<div
 			style="
 				width: min(100%, 50em);
 				margin-left: auto;
 				margin-right: auto;
-				outline: 1px solid #292929;
-				margin-bottom: 1em;
+				background-color: white;
 			"
 		>
-			<!-- header -->
-			<div
-				class="header"
-				style="
-					background-color: #292929;
-					padding-left: 2.5em;
-					padding-right: 2.5em;
-					padding-top: 2em;
-					padding-bottom: 2em;
-				"
-			>
-				<a href="https://mennr.tech">
-					<img width="250" height="75" alt src="cid:{{.Logo}}" />
-				</a>
+			<div>
+				<img
+					alt
+					src="cid:{{.Hero}}"
+					style="width: 100%; object-fit: cover; height: 25rem"
+				/>
 			</div>
 
 			<!-- greetings text -->
@@ -48,12 +71,19 @@
 					padding-right: 2em;
 					padding-top: 1em;
 					padding-bottom: 0em;
+					color: #161616;
 				"
 			>
-				<p style="color: black; font-weight: 400">Hello, Team</p>
-				<p style="color: black; font-weight: 400">
-					A new form has been submitted. The details are as follows:
+				<p
+					style="
+						font-weight: 500;
+						font-size: 1.5em;
+						text-align: center;
+					"
+				>
+					Thank you for your time!
 				</p>
+				<p style="font-weight: 400">Your reservation summary</p>
 			</div>
 
 			<!-- form content -->
@@ -65,7 +95,7 @@
 					padding-bottom: 2.5em;
 				"
 			>
-				<table style="margin-left: -2rem; border-spacing: 2rem 1.5rem">
+				<table style="border-spacing: 0 1.5rem">
 					<tr>
 						<th
 							style="
@@ -76,7 +106,7 @@
 							align="left"
 							valign="top"
 						>
-							Name
+							First and Last Name
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
 							{{.Data.Name}}
@@ -93,7 +123,58 @@
 							align="left"
 							valign="top"
 						>
-							Email ID
+							Preferred Date
+						</th>
+						<td style="width: fit-content; color: #3b3b3b">
+							{{.Data.Date}}
+						</td>
+					</tr>
+
+					<tr>
+						<th
+							style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+							align="left"
+							valign="top"
+						>
+							Preferred Time
+						</th>
+						<td style="width: fit-content; color: #3b3b3b">
+							{{.Data.Time}}
+						</td>
+					</tr>
+
+					<tr>
+						<th
+							style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+							align="left"
+							valign="top"
+						>
+							Number of Guests
+						</th>
+						<td style="width: fit-content; color: #3b3b3b">
+							{{.Data.Guests}}
+						</td>
+					</tr>
+
+					<tr>
+						<th
+							style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+							align="left"
+							valign="top"
+						>
+							Email
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
 							{{.Data.Email}}
@@ -110,13 +191,14 @@
 							align="left"
 							valign="top"
 						>
-							Contact No.
+							Phone Number
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.Data.PhoneNumber}}
+							{{.Data.Phone}}
 						</td>
 					</tr>
 
+					{{- if .Data.Message }}
 					<tr>
 						<th
 							style="
@@ -127,101 +209,24 @@
 							align="left"
 							valign="top"
 						>
-							Vehicle Model
+							Additional Message
 						</th>
 						<td style="width: fit-content; color: #3b3b3b">
-							{{.Data.VehicleModel}}
-						</td>
-					</tr>
-
-					<tr>
-						<th
-							style="
-								text-align: left;
-								min-width: max-content;
-								vertical-align: top;
-							"
-							align="left"
-							valign="top"
-						>
-							Vehicle Make
-						</th>
-						<td style="width: fit-content; color: #3b3b3b">
-							{{.Data.VehicleMake}}
-						</td>
-					</tr>
-
-					<tr>
-						<th
-							style="
-								text-align: left;
-								min-width: max-content;
-								vertical-align: top;
-							"
-							align="left"
-							valign="top"
-						>
-							Vehicle Year
-						</th>
-						<td style="width: fit-content; color: #3b3b3b">
-							{{.Data.VehicleYear}}
-						</td>
-					</tr>
-
-					{{- if .Data.RequestedDate }}
-					<tr>
-						<th
-							style="
-								text-align: left;
-								min-width: max-content;
-								vertical-align: top;
-							"
-							align="left"
-							valign="top"
-						>
-							Requested Date
-						</th>
-						<td style="width: fit-content; color: #3b3b3b">
-							{{.Data.RequestedDate}}
-						</td>
-					</tr>
-					{{- end }} {{- if .Data.RequestedTime }}
-					<tr>
-						<th
-							style="
-								text-align: left;
-								min-width: max-content;
-								vertical-align: top;
-							"
-							align="left"
-							valign="top"
-						>
-							Requested Time
-						</th>
-						<td style="width: fit-content; color: #3b3b3b">
-							{{.Data.RequestedTime}}
-						</td>
-					</tr>
-					{{- end }} {{- if .Data.VehicleRequirement }}
-					<tr>
-						<th
-							style="
-								text-align: left;
-								min-width: max-content;
-								vertical-align: top;
-							"
-							align="left"
-							valign="top"
-						>
-							Anything Else?
-						</th>
-						<td style="width: fit-content; color: #3b3b3b">
-							{{.Data.VehicleRequirement}}
+							{{.Data.Message}}
 						</td>
 					</tr>
 					{{- end }}
 				</table>
 			</div>
+		</div>
+
+		<div style="margin-top: 6rem; padding-bottom: 3rem; text-align: center">
+			<a style="color: #171717cc" href="https://cozylounge.in">
+				www.cozylounge.in
+			</a>
+			<p style="color: #171717cc">
+				© 2024 Cozy-The Cafe Lounge. All rights reserved.
+			</p>
 		</div>
 	</body>
 </html>

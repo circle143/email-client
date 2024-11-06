@@ -22,10 +22,8 @@ func Router() *chi.Mux {
 	router.Use(middleware.Logger)
 	router.Use(middleware.Heartbeat("/"))
 
-	router.Get("/contact-us", controllers.GetContactUs)
-	router.Post("/contact-us", controllers.PostContactUs)
-
-	router.Post("/appointment", controllers.PostAppointment)
+	router.Get("/reservation", controllers.GetReservation)
+	router.Post("/reservation", controllers.PostReservation)
 
 	return router
 

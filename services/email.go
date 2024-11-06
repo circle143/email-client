@@ -10,30 +10,34 @@ import (
 )
 
 type Constraint interface {
-	Contact | Appointment
+	Reservation | Appointment
+	GetEmail() string
 }
 
 func sendMail[T Constraint](data T) error {
 	type EmailBody struct {
 		Data T
 		Logo string
+		Hero string
 	}
 
 	smtpServer := "smtp.gmail.com"
 	smtpPort := "587"
 
-	from := "rohan@mennr.tech"
-	password := "tkhv bcse ubwn wmgj"
+	from := " reservations@cozylounge.in"
+	password := "hpfa isfh obuz tooh"
 
 	to := []string{
 		"vermarohan031@gmail.com",
+		data.GetEmail(),
 	}
 
 	// mail content
-	subject := "New form submission"
+	subject := "Cozy lounge reservation"
 	templateData := EmailBody{
 		Data: data,
 		Logo: "logo",
+		Hero: "hero",
 	}
 
 	t, err := template.ParseFiles("./assets/template.html")
@@ -48,10 +52,17 @@ func sendMail[T Constraint](data T) error {
 		return err
 	}
 
-	imagePath := "./assets/logo.png"
-	attachement, err := os.ReadFile(imagePath)
+	logoPath := "./assets/logo.png"
+	heroPath := "./assets/hero.png"
+	logoAttachment, err := os.ReadFile(logoPath)
 	if err != nil {
-		fmt.Println("error reading image file", err)
+		fmt.Println("error reading logo image file", err)
+		return err
+	}
+
+	heroAttachment, err := os.ReadFile(heroPath)
+	if err != nil {
+		fmt.Println("error reading hero image file", err)
 		return err
 	}
 
@@ -65,10 +76,16 @@ func sendMail[T Constraint](data T) error {
 	mime += "Content-Type: image/png\n"
 	mime += "Content-Transfer-Encoding: base64\n"
 	mime += "Content-ID: <logo>\n\n"
-	mime += base64.StdEncoding.EncodeToString(attachement) + "\n"
+	mime += base64.StdEncoding.EncodeToString(logoAttachment) + "\n"
+
+	mime += "--MIMEBOUNDARY\n"
+	mime += "Content-Type: image/png\n"
+	mime += "Content-Transfer-Encoding: base64\n"
+	mime += "Content-ID: <hero>\n\n"
+	mime += base64.StdEncoding.EncodeToString(heroAttachment) + "\n"
 	mime += "--MIMEBOUNDARY--"
 
-	toHeader := "To: " + to[0] + "\r\n"
+	toHeader := "To: " + to[0] + ", " + to[1] + "\r\n"
 	subjectHeader := "Subject: " + subject + "\r\n"
 	headers := toHeader + subjectHeader
 

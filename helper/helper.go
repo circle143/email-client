@@ -8,7 +8,7 @@ import (
 )
 
 type Constraint interface {
-	services.Contact | services.Appointment
+	services.Reservation | services.Appointment
 }
 
 func DecodeJson[T Constraint](w http.ResponseWriter, r *http.Request) (T, error) {

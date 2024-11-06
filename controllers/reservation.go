@@ -9,7 +9,7 @@ import (
 	"mennr.tech/api/services"
 )
 
-func GetContactUs(w http.ResponseWriter, r *http.Request) {
+func GetReservation(w http.ResponseWriter, r *http.Request) {
 	var response services.JSONResponse
 
 	response.Error = false
@@ -22,15 +22,15 @@ func GetContactUs(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func PostContactUs(w http.ResponseWriter, r *http.Request) {
-	data, err := helper.DecodeJson[services.Contact](w, r)
+func PostReservation(w http.ResponseWriter, r *http.Request) {
+	data, err := helper.DecodeJson[services.Reservation](w, r)
 	if err != nil {
 		fmt.Println(err)
 		helper.ErrorResponse(w, err)
 		return
 	}
 
-	err = data.HandleContactData()
+	err = data.HandleReservationData()
 
 	if err != nil {
 		err = errors.New("500 internal server error")

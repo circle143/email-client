@@ -12,6 +12,10 @@ type Appointment struct {
 	RequestedTime      string `json:"requestedTime"`
 }
 
+func (a Appointment) GetEmail() string {
+	return a.Email
+}
+
 func (a *Appointment) HandleAppointmentData() error {
 	err := sendMail[Appointment](*a)
 
