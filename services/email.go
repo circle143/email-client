@@ -28,7 +28,7 @@ func sendMail[T Constraint](data T) error {
 	password := "hpfa isfh obuz tooh"
 
 	to := []string{
-		"vermarohan031@gmail.com",
+		"info@cozylounge.in",
 		data.GetEmail(),
 	}
 
