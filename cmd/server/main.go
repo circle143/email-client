@@ -1,22 +1,30 @@
 package main
 
 import (
-	"fmt"
+	appInit "circledigital.in/api/init"
+	"github.com/joho/godotenv"
+	"log"
 	"net/http"
 	"os"
-
-	"mennr.tech/api/router"
 )
 
 func main() {
-	PORT := "8080"
-	if port := os.Getenv("PORT"); port != "" {
-		PORT = port
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Error loading .env file")
+	}
+	log.Println("email-service")
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
 	}
 
-	router := router.Router()
+	app := appInit.GetApplication()
 
-	fmt.Println("server is running on port:", PORT)
-	http.ListenAndServe(":"+PORT, router)
-
+	log.Printf("Server is listening on PORT: %s", port)
+	err = http.ListenAndServe(":"+port, app.GetRouter())
+	if err != nil {
+		log.Fatalf("Error starting server: %v", err)
+	}
 }
