@@ -2,6 +2,7 @@ package init
 
 import (
 	"circledigital.in/api/services/cozy"
+	"circledigital.in/api/services/mangalya"
 	"circledigital.in/api/utils/common"
 	"circledigital.in/api/utils/custom"
 	"circledigital.in/api/utils/payload"
@@ -18,6 +19,7 @@ type serviceFactory func(app common.IApp) common.IService
 
 var services = []serviceFactory{
 	cozy.CreateCozyService,
+	mangalya.CreateMangalyaService,
 }
 
 // handle400 returns custom responses for not found routes and not allowed methods

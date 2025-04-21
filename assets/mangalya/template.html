@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Mangalya Form Enquiry</title>
+
+  <style>
+    th,
+    td,
+    p {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+    }
+
+    td {
+      padding-left: 1.5rem;
+    }
+  </style>
+</head>
+<body
+        class
+        style="
+			font-family: 'Helvetica', 'Arial', sans-serif;
+			background-image: linear-gradient(
+				to bottom,
+				#161616 300px,
+				#dadada 300px
+			);
+			margin: 0;
+			padding: 0;
+		"
+>
+<!-- header -->
+<div
+        class="header"
+        style="
+				background-color: #161616;
+				padding-left: 2.5rem;
+				padding-right: 2.5rem;
+				padding-top: 2rem;
+				padding-bottom: 1rem;
+				text-align: center;
+			"
+>
+  <a href="https://www.mangalyagroup.in">
+    <img width="192" height="91" alt src="cid:{{.Logo}}" />
+  </a>
+</div>
+
+<div
+        style="
+				width: min(100%, 50em);
+				margin-left: auto;
+				margin-right: auto;
+				background-color: white;
+			"
+>
+
+
+  <!-- greetings text -->
+  <div
+          class="greetings"
+          style="
+					padding-left: 2em;
+					padding-right: 2em;
+					padding-top: 1em;
+					padding-bottom: 0em;
+					color: #161616;
+				"
+  >
+    <p
+            style="
+						font-weight: 500;
+						font-size: 1.5em;
+						text-align: center;
+					"
+    >
+      Mangalya Form Enquiry!
+    </p>
+    <p style="font-weight: 400">Form Submission details</p>
+  </div>
+
+  <!-- form content -->
+  <div
+          class="form"
+          style="
+					padding-left: 2em;
+					padding-right: 2em;
+					padding-bottom: 2.5em;
+				"
+  >
+    <table style="border-spacing: 0 1.5rem">
+      <tr>
+        <th
+                style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+                align="left"
+                valign="top"
+        >
+          Name
+        </th>
+        <td style="width: fit-content; color: #3b3b3b">
+          {{.Data.Name}}
+        </td>
+      </tr>
+
+
+      <tr>
+        <th
+                style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+                align="left"
+                valign="top"
+        >
+          Email
+        </th>
+        <td style="width: fit-content; color: #3b3b3b">
+          {{.Data.Email}}
+        </td>
+      </tr>
+
+      <tr>
+        <th
+                style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+                align="left"
+                valign="top"
+        >
+          Phone Number
+        </th>
+        <td style="width: fit-content; color: #3b3b3b">
+          {{.Data.Phone}}
+        </td>
+      </tr>
+
+      {{- if .Data.More }}
+      <tr>
+        <th
+                style="
+								text-align: left;
+								min-width: max-content;
+								vertical-align: top;
+							"
+                align="left"
+                valign="top"
+        >
+          Additional Message
+        </th>
+        <td style="width: fit-content; color: #3b3b3b">
+          {{.Data.More}}
+        </td>
+      </tr>
+      {{- end }}
+    </table>
+  </div>
+</div>
+
+<div style="margin-top: 6rem; padding-bottom: 3rem; text-align: center">
+  <a style="color: #171717cc" href="https://www.mangalyagroup.in">
+   www.mangalyagroup.in
+  </a>
+  <p style="color: #171717cc">
+    © 2025 Mangalya Group. All rights reserved.
+  </p>
+</div>
+</body>
+</html>
