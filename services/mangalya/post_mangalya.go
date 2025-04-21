@@ -16,7 +16,7 @@ type hNewFormSubmission struct {
 }
 
 func (nfs *hNewFormSubmission) GetToSend() []string {
-	return []string{"support@mangalyagroup.in", nfs.Email}
+	return []string{"mangalyagroup@gmail.com", nfs.Email}
 }
 
 func (nfs *hNewFormSubmission) GetSubject() string {
