@@ -1,7 +1,7 @@
 package payload
 
 import (
-	"mennr.tech/api/utils/custom"
+	"circledigital.in/api/utils/custom"
 	"net/http"
 )
 
