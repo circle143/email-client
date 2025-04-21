@@ -8,10 +8,11 @@ import (
 )
 
 type hNewFormSubmission struct {
-	Name  string `validate:"required,min=3"`
-	Email string `validate:"required,email"`
-	Phone string `validate:"required,e164"`
-	More  string
+	Name     string `validate:"required,min=3"`
+	Email    string `validate:"required,email"`
+	Phone    string `validate:"required,e164"`
+	Location string `validate:"required"`
+	More     string
 }
 
 func (nfs *hNewFormSubmission) GetToSend() []string {
