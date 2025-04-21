@@ -8,7 +8,9 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
+	"github.com/go-chi/httprate"
 	"net/http"
+	"time"
 )
 
 // serviceFactory defines type for getting a service
@@ -40,6 +42,16 @@ func (a *app) handle400(router *chi.Mux) {
 func (a *app) createRouter() *chi.Mux {
 	mux := chi.NewMux()
 
+	// application middlewares
+	mux.Use(httprate.LimitByIP(100, time.Minute))
+	mux.Use(middleware.Heartbeat("/"))
+	mux.Use(middleware.Logger)
+	mux.Use(middleware.Recoverer)
+	mux.Use(middleware.StripSlashes)
+	mux.Use(middleware.AllowContentType("application/json"))
+
+	a.handle400(mux)
+
 	mux.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   []string{"https://*", "http://*"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
@@ -48,15 +60,6 @@ func (a *app) createRouter() *chi.Mux {
 		AllowCredentials: false,
 		MaxAge:           300,
 	}))
-
-	// application middlewares
-	mux.Use(middleware.Heartbeat("/"))
-	mux.Use(middleware.Logger)
-	mux.Use(middleware.Recoverer)
-	mux.Use(middleware.StripSlashes)
-	mux.Use(middleware.AllowContentType("application/json"))
-
-	a.handle400(mux)
 
 	// add services routes
 	for _, factory := range services {

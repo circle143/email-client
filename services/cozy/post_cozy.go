@@ -4,7 +4,6 @@ import (
 	"circledigital.in/api/services/email"
 	"circledigital.in/api/utils/custom"
 	"circledigital.in/api/utils/payload"
-	"log"
 	"net/http"
 )
 
@@ -66,13 +65,13 @@ func (cs *cozyService) addNewReservation(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	emailService := email.CreateEmailService()
-	err := emailService.SendEmail(reservation)
-	if err != nil {
-		log.Println(err)
-		payload.HandleError(w, err)
-		return
-	}
+	//emailService := email.CreateEmailService()
+	//err := emailService.SendEmail(reservation)
+	//if err != nil {
+	//	log.Println(err)
+	//	payload.HandleError(w, err)
+	//	return
+	//}
 
 	var response custom.JSONResponse
 	response.Error = false
