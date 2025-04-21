@@ -65,8 +65,7 @@ func (cs *cozyService) addNewReservation(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	emailService := email.CreateEmailService()
-	err := emailService.SendEmail(reservation)
+	err := cs.emailService.SendEmail(reservation)
 	if err != nil {
 		payload.HandleError(w, err)
 		return

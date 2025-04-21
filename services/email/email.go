@@ -23,3 +23,18 @@ func CreateEmailService() IEmailService {
 		smtpPort:   os.Getenv("SMTP_PORT"),
 	}
 }
+
+type AuthenticationDetails struct {
+	Email    string
+	Password string
+}
+
+// CreateEmailServiceWithCustomAuth creates email service with custom auth details
+func CreateEmailServiceWithCustomAuth(auth AuthenticationDetails) IEmailService {
+	return &emailService{
+		from:       auth.Email,
+		password:   auth.Password,
+		smtpServer: os.Getenv("SMTP_SERVER"),
+		smtpPort:   os.Getenv("SMTP_PORT"),
+	}
+}

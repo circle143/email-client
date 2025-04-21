@@ -1,6 +1,9 @@
 package common
 
-import "github.com/go-chi/chi/v5"
+import (
+	"circledigital.in/api/services/email"
+	"github.com/go-chi/chi/v5"
+)
 
 // package common handles all the methods required by multiple services
 
@@ -13,4 +16,5 @@ type IService interface {
 // IApp is an application interface with all the configurations
 type IApp interface {
 	GetRouter() *chi.Mux
+	GetEmailService() email.IEmailService
 }
