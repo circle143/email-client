@@ -1,6 +1,7 @@
 package init
 
 import (
+	"circledigital.in/api/services/cozy"
 	"circledigital.in/api/utils/common"
 	"circledigital.in/api/utils/custom"
 	"circledigital.in/api/utils/payload"
@@ -13,7 +14,9 @@ import (
 // serviceFactory defines type for getting a service
 type serviceFactory func(app common.IApp) common.IService
 
-var services = []serviceFactory{}
+var services = []serviceFactory{
+	cozy.CreateCozyService,
+}
 
 // handle400 returns custom responses for not found routes and not allowed methods
 func (a *app) handle400(router *chi.Mux) {

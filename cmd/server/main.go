@@ -13,7 +13,7 @@ func main() {
 	if err != nil {
 		log.Println("Error loading .env file")
 	}
-	log.Println("real-estate-erp-api")
+	log.Println("email-service")
 
 	port := os.Getenv("PORT")
 	if port == "" {
