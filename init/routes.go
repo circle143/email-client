@@ -1,8 +1,12 @@
 package init
 
 import (
+	"net/http"
+	"time"
+
 	"circledigital.in/api/services/cozy"
 	"circledigital.in/api/services/mangalya"
+	snow_village "circledigital.in/api/services/snow-village"
 	"circledigital.in/api/utils/common"
 	"circledigital.in/api/utils/custom"
 	"circledigital.in/api/utils/payload"
@@ -10,8 +14,6 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 	"github.com/go-chi/httprate"
-	"net/http"
-	"time"
 )
 
 // serviceFactory defines type for getting a service
@@ -20,6 +22,7 @@ type serviceFactory func(app common.IApp) common.IService
 var services = []serviceFactory{
 	cozy.CreateCozyService,
 	mangalya.CreateMangalyaService,
+	snow_village.CreateSnowVillageService,
 }
 
 // handle400 returns custom responses for not found routes and not allowed methods
