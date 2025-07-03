@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Mangalya Form Enquiry</title>
+    <title>Snow Village Message Submission</title>
 
     <style>
       th,
@@ -23,7 +23,7 @@
       font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;
       background-image: linear-gradient(
         to bottom,
-        #161616 300px,
+        #3392ff 300px,
         #dadada 300px
       );
       margin: 0;
@@ -34,7 +34,7 @@
     <div
       class="header"
       style="
-        background-color: #161616;
+        background-color: #3392ff;
         padding-left: 2.5rem;
         padding-right: 2.5rem;
         padding-top: 2rem;
@@ -67,9 +67,9 @@
         "
       >
         <p style="font-weight: 500; font-size: 1.5em; text-align: center">
-          Mangalya Form Enquiry!
+          Snow Village
         </p>
-        <p style="font-weight: 400">Form Submission details</p>
+        <p style="font-weight: 400">Message details</p>
       </div>
 
       <!-- form content -->
@@ -88,11 +88,9 @@
               align="left"
               valign="top"
             >
-              Location
+              Name
             </th>
-            <td style="width: fit-content; color: #3b3b3b">
-              {{.Data.Location}}
-            </td>
+            <td style="width: fit-content; color: #3b3b3b">{{.Data.Name}}</td>
           </tr>
 
           <tr>
@@ -105,9 +103,9 @@
               align="left"
               valign="top"
             >
-              Name
+              Origin
             </th>
-            <td style="width: fit-content; color: #3b3b3b">{{.Data.Name}}</td>
+            <td style="width: fit-content; color: #3b3b3b">{{.Data.Origin}}</td>
           </tr>
 
           <tr>
@@ -140,7 +138,7 @@
             <td style="width: fit-content; color: #3b3b3b">{{.Data.Phone}}</td>
           </tr>
 
-          {{- if .Data.More }}
+          {{- if .Data.Message}}
           <tr>
             <th
               style="
@@ -151,9 +149,11 @@
               align="left"
               valign="top"
             >
-              Additional Message
+              Message
             </th>
-            <td style="width: fit-content; color: #3b3b3b">{{.Data.More}}</td>
+            <td style="width: fit-content; color: #3b3b3b">
+              {{.Data.Message}}
+            </td>
           </tr>
           {{- end }}
         </table>
@@ -161,13 +161,10 @@
     </div>
 
     <div style="margin-top: 6rem; padding-bottom: 3rem; text-align: center">
-      <a style="color: #171717cc" href="https://www.mangalyagroup.in">
-        www.mangalyagroup.in
+      <a style="color: #171717cc" href="https://www.snowvilage.in">
+        www.snowvillage.in
       </a>
-      <p style="color: #171717cc">
-        © 2025 Mangalya Group. All rights reserved.
-      </p>
+      <p style="color: #171717cc">© 2025 Snow Village. All rights reserved.</p>
     </div>
   </body>
 </html>
-

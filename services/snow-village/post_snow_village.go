@@ -41,7 +41,6 @@ func (h *hNewMessage) GetTemplateData() any {
 	}{
 		Data: h,
 		Logo: "logo",
-		Hero: "hero",
 	}
 }
 
@@ -51,12 +50,6 @@ func (h *hNewMessage) GetAttachments() []email.Attachment {
 			Path:        "./assets/snow-village/logo.png",
 			ContentType: "image/png",
 			ContentID:   "logo",
-			Inline:      true,
-		},
-		{
-			Path:        "./assets/snow-village/hero.png",
-			ContentType: "image/png",
-			ContentID:   "hero",
 			Inline:      true,
 		},
 	}
