@@ -4,7 +4,7 @@ type userOrigin string
 
 const (
 	INSTAGRAM        userOrigin = "instagram"
-	GOOGLE           userOrigin = "googe"
+	GOOGLE           userOrigin = "google"
 	FRIENDSANDFAMILY userOrigin = "friends-and-family"
 	NEWSPAPERAD      userOrigin = "newspaper-ad"
 )
