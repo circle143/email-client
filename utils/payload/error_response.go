@@ -1,9 +1,11 @@
 package payload
 
 import (
-	"circledigital.in/api/utils/custom"
 	"errors"
+	"log"
 	"net/http"
+
+	"circledigital.in/api/utils/custom"
 )
 
 // errorResponse creates a json error response for client
@@ -23,6 +25,8 @@ func errorResponse(w http.ResponseWriter, err error, status ...int) {
 
 // HandleError is used by services to send error to clients
 func HandleError(w http.ResponseWriter, err error) {
+	log.Println("sending error response")
+	log.Println(err)
 	var reqErr *custom.RequestError
 
 	if errors.As(err, &reqErr) {
